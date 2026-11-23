@@ -2,7 +2,7 @@
   "id": "ags_control",
   "title": "AGS Control",
   "description": "Active grille shutters (radiator shutters) for show use at standstill: Open, Closed or OEM via the DME. Driving off hands back to OEM. Ships disarmed (simulated).",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "vendor": "custom",
   "loggingId": "OAG1",
   "iconGlyph": "AGS",
@@ -45,59 +45,32 @@
   "screens": [
     {
       "name": "MAIN",
-      "kind": "menu",
+      "kind": "canvas",
       "title": "AGS Control",
-      "settings": true,
-      "items": [
+      "buttons": [
         [
-          "text",
-          "TXT_STATE",
-          ""
-        ],
-        [
-          "button",
           "BTN_OPEN",
-          "Open (standstill)"
+          "Open"
         ],
         [
-          "button",
           "BTN_CLOSED",
-          "Closed (standstill)"
+          "Closed"
         ],
         [
-          "button",
           "BTN_OEM",
-          "OEM (automatic)"
+          "OEM"
         ],
         [
-          "text",
-          "TXT_INFO",
-          ""
+          "BTN_PAGE",
+          "Next page"
         ],
         [
-          "text",
-          "TXT_EVENTS",
-          ""
-        ],
-        [
-          "text",
-          "TXT_ERR",
-          ""
-        ],
-        [
-          "button",
-          "BTN_READ",
-          "Read shutter status"
-        ],
-        [
-          "text",
-          "TXT_READ",
-          ""
-        ],
-        [
-          "button",
           "BTN_LOGS",
-          "Log (telemetry)"
+          "Log list"
+        ],
+        [
+          "BTN_SETTINGS",
+          "Settings"
         ]
       ]
     },

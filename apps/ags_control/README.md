@@ -16,6 +16,18 @@ Pressing Open / Closed while moving (or without a speed signal) does nothing and
 
 Runs with `autostart` in the background (confirmed with a Store install on a G30 545e), so driving off is handed back even with the app closed.
 
+## Screen
+
+Drawn on the canvas in the style of the kit's other apps (Engine Config), with three tabs:
+
+| Tab | Content |
+|---|---|
+| **Shutters** | the car's front with both shutters (louvres turn with the state; dimmed = the DME has them), the mode in large letters, speed / coolant / position / car mode, and the **Open / Closed / OEM** buttons (selected one red; Open / Closed greyed out while moving) |
+| **Status** | diagnostic link, DME answer, car mode, last send, DME takeovers, errors, read-back, **Read shutters** button |
+| **Log** | the telemetry log, newest first, **Newer / Older**, **QR code** (opens the QR screen), **Clear** (press twice) |
+
+Badges top right: `SIM` (car control off) and `MOVING`. Where the renderer does not hand the screen to the app, the HMI bar shows Open / Closed / OEM / Next page / Log list / Settings instead of the drawn buttons. `node kit/tools/preview_ags_ui.js <outDir>` renders the tabs to PNG on a PC.
+
 ## How it works
 
 Jobs taken from BMW's own DME SGBD `dme8ff_r` (Bosch MG1, B48/B58), sent over the head unit's TASU diagnostic gateway (`kit/diag.js`) to the DME at `0x12`:
@@ -35,7 +47,7 @@ The car's driving mode (`FES.statusFESVehicleDynamicSwitchHMI`) is only logged. 
 
 ## Telemetry log
 
-Main screen → **Log (telemetry)**: 12 lines per page, newest first, kept on the head unit (`ags_log.txt` in the app's data directory, last 400 lines) so it survives a restart. Times use the **Log time zone** setting because the head unit clock runs on UTC. Lines are kept to ~55 characters:
+**Log** tab (or **Log list** in the HMI bar: 12 lines per page), newest first, kept on the head unit (`ags_log.txt` in the app's data directory, last 400 lines) so it survives a restart. Times use the **Log time zone** setting because the head unit clock runs on UTC. Lines are kept to ~55 characters:
 
 | Entry | Meaning |
 |---|---|
@@ -50,7 +62,7 @@ Main screen → **Log (telemetry)**: 12 lines per page, newest first, kept on th
 | `v48 n1500 D c82 SportInd REF sp0 tx65` | snapshot every 30 s: speed, rpm, selector, coolant, mode, state, set-point, sends |
 | `rb 83.5deg 100/100%` | read-back: position, set-point upper/lower |
 
-**Show as QR code (for the phone)** on the log screen shows the log as plain-text QR codes (no compression), so a phone camera shows the lines as text that can be copied. Page 1 holds the newest lines; **Size** switches between Large (~14 lines, easiest to scan) and Medium (~25 lines); **Refresh** takes a new snapshot of the log.
+**QR code** on the Log tab (or *Show as QR code* on the log list) shows the log as plain-text QR codes (no compression), so a phone camera shows the lines as text that can be copied. Page 1 holds the newest lines; **Size** switches between Large (~14 lines, easiest to scan) and Medium (~25 lines); **Refresh** takes a new snapshot of the log.
 
 ## Installation
 
