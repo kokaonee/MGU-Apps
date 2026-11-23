@@ -19,7 +19,7 @@ const t = theme('m_tricolour');
 
 const base = {
     armed: true, standing: true, mode: 'open', word: 'OPEN', sub: 'Held by the app  ·  sent 4 s ago  ·  DME takeovers 2',
-    paint: 'red', speed: 0, coolant: 88, posDeg: 83.5, carMode: 'Sport', upper: 1, lower: 1, upperDim: false, lowerDim: false,
+    paint: 'sapphire', speed: 0, coolant: 88, posDeg: 83.5, carMode: 'Sport', upper: 1, lower: 1, upperDim: false, lowerDim: false,
     rows: [
         ['DIAGNOSTIC LINK', 'yes', 'good'], ['SHUTTER MODULE (DME)', 'answers', 'good'], ['CAR MODE', 'Sport'],
         ['SENT TO CAR', 'OPEN  ·  4 s ago  ·  #12'], ['DME TAKEOVERS', '2  ·  every ~60 s  ·  next in 38 s'],

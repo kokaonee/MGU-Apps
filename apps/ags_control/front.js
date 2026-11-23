@@ -21,7 +21,7 @@ const PAINTS = {
     red: ['#ff3b2e', '#c8140c', '#5a0603'],
     alpine: ['#ffffff', '#e4e7ea', '#8d9298'],
     mineral: ['#f4f5f3', '#cfd1cf', '#7c807e'],
-    sapphire: ['#4a4f58', '#17191d', '#050506'],
+    sapphire: ['#5c6470', '#1d2027', '#060608'],
     carbon: ['#3d5a86', '#16233a', '#05080e'],
     phytonic: ['#3f78c8', '#173f7d', '#06142c'],
     sophisto: ['#8d939b', '#4f555d', '#1b1d21'],
@@ -243,12 +243,6 @@ function draw(cv, G, t, x, y, w, h, v) {
         const kb = bounds(k), g = grow(k, 4);
         cv.polyline(g.filter(([, py]) => py < kb.t + 30).sort((a, b) => a[0] - b[0]).map(T), 1.8, G.withAlpha('#ffffff', 0.45));
     }
-
-    // --- number plate (blank) ---
-    const [px, py, pw, ph] = S.plate;
-    cv.roundRect(...T([px - 2, py - 2]), (pw + 4) * sc, (ph + 4) * sc, 3 * sc, '#1a1b1e');
-    cv.roundRect(...T([px, py]), pw * sc, ph * sc, 3 * sc, '#eceef1');
-    cv.roundRect(...T([px, py]), 20 * sc, ph * sc, 3 * sc, '#2445a8');
 
     // --- centre intake: lower shutter behind the honeycomb ---
     cv.fill(grow(S.lower, 3).map(T), '#030304');
