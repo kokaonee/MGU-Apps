@@ -22,7 +22,7 @@ Drawn on the canvas in the style of the kit's other apps (Engine Config), with t
 
 | Tab | Content |
 |---|---|
-| **Shutters** | the car's front with both shutters (louvres turn with the state; dimmed = the DME has them), the mode in large letters, speed / coolant / position / car mode, and the **Open / Closed / OEM** buttons (selected one red; Open / Closed greyed out while moving) |
+| **Shutters** | the front of a G30 LCI with M Sport package (`front.js`): the upper shutter behind the kidneys and double bars, the lower one behind the honeycomb of the centre intake; the louvres turn with the state, dimmed = the DME has them;, the mode in large letters, speed / coolant / position / car mode, and the **Open / Closed / OEM** buttons (selected one red; Open / Closed greyed out while moving) |
 | **Status** | diagnostic link, DME answer, car mode, last send, DME takeovers, errors, read-back, **Read shutters** button |
 | **Log** | the telemetry log, newest first, **Newer / Older**, **QR code** (opens the QR screen), **Clear** (press twice) |
 
