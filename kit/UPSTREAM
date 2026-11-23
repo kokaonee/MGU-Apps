@@ -1,0 +1,4 @@
+kit/ and deploy/ are copied from https://github.com/cauliflowermossgrape/idrive7-apps (MIT)
+upstream commit: 683a4a4 (2026-11-23)
+Only update by copying a newer upstream kit/ over this one; keep local additions listed below.
+local additions: kit/tools/test_ags_control.js

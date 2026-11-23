@@ -1,0 +1,382 @@
+{
+  "id": "ags_control",
+  "title": "AGS Control",
+  "description": "Active grille shutters (radiator shutters) for show use at standstill: Open, Closed or OEM via the DME. Driving off hands back to OEM. Ships disarmed (simulated).",
+  "version": "0.3.0",
+  "vendor": "custom",
+  "loggingId": "OAG1",
+  "iconGlyph": "AGS",
+  "autostart": true,
+  "mguHmi": [
+    "ID7",
+    "ID8"
+  ],
+  "requires": {
+    "idrive7-renderd": "2.1.18",
+    "mgu-inputgate": "1.1.0"
+  },
+  "signals": {
+    "com.harman.infotainment.systemfunctions.tasu.tasu.InternalTasu": {
+      "_instances": "SystemFunctionsInternalTasuInst1",
+      "_methods": [
+        "sendTasuRequest"
+      ],
+      "_broadcasts": [
+        "sendTasuResponse"
+      ]
+    },
+    "de.bmw.infotainment.drivingexcitement.FES": {
+      "_optional": "car driving mode for the log",
+      "statusFESVehicleDynamicSwitchHMI": "rs"
+    },
+    "de.bmw.infotainment.vehicle.CDS": {
+      "statusEngineTemperature": "rs",
+      "statusEngineSpeed2": "rs"
+    },
+    "de.bmw.infotainment.vehicle.Vehicle2": {
+      "statusCarSpeed2": "rs"
+    },
+    "de.bmw.infrastructure.VehicleInformation": {
+      "_optional": "selector position for the log",
+      "statusGearboxDrive": "s",
+      "DataPowerTrain2": "s"
+    }
+  },
+  "screens": [
+    {
+      "name": "MAIN",
+      "kind": "menu",
+      "title": "AGS Control",
+      "settings": true,
+      "items": [
+        [
+          "text",
+          "TXT_STATE",
+          ""
+        ],
+        [
+          "button",
+          "BTN_OPEN",
+          "Open (standstill)"
+        ],
+        [
+          "button",
+          "BTN_CLOSED",
+          "Closed (standstill)"
+        ],
+        [
+          "button",
+          "BTN_OEM",
+          "OEM (automatic)"
+        ],
+        [
+          "text",
+          "TXT_INFO",
+          ""
+        ],
+        [
+          "text",
+          "TXT_EVENTS",
+          ""
+        ],
+        [
+          "text",
+          "TXT_ERR",
+          ""
+        ],
+        [
+          "button",
+          "BTN_READ",
+          "Read shutter status"
+        ],
+        [
+          "text",
+          "TXT_READ",
+          ""
+        ],
+        [
+          "button",
+          "BTN_LOGS",
+          "Log (telemetry)"
+        ]
+      ]
+    },
+    {
+      "name": "LOGS",
+      "kind": "menu",
+      "title": "AGS Control - Log",
+      "items": [
+        [
+          "text",
+          "LOG_HDR",
+          ""
+        ],
+        [
+          "button",
+          "BTN_LOG_NEWER",
+          "< Newer"
+        ],
+        [
+          "button",
+          "BTN_LOG_OLDER",
+          "Older >"
+        ],
+        [
+          "button",
+          "BTN_LOG_QR",
+          "Show as QR code (for the phone)"
+        ],
+        [
+          "text",
+          "LOG_0",
+          ""
+        ],
+        [
+          "text",
+          "LOG_1",
+          ""
+        ],
+        [
+          "text",
+          "LOG_2",
+          ""
+        ],
+        [
+          "text",
+          "LOG_3",
+          ""
+        ],
+        [
+          "text",
+          "LOG_4",
+          ""
+        ],
+        [
+          "text",
+          "LOG_5",
+          ""
+        ],
+        [
+          "text",
+          "LOG_6",
+          ""
+        ],
+        [
+          "text",
+          "LOG_7",
+          ""
+        ],
+        [
+          "text",
+          "LOG_8",
+          ""
+        ],
+        [
+          "text",
+          "LOG_9",
+          ""
+        ],
+        [
+          "text",
+          "LOG_10",
+          ""
+        ],
+        [
+          "text",
+          "LOG_11",
+          ""
+        ],
+        [
+          "button",
+          "BTN_LOG_CLEAR",
+          "Clear log"
+        ]
+      ]
+    },
+    {
+      "name": "QR",
+      "kind": "canvas",
+      "title": "AGS Control - Log QR",
+      "buttons": [
+        [
+          "BTN_QR_NEWER",
+          "< Newer"
+        ],
+        [
+          "BTN_QR_OLDER",
+          "Older >"
+        ],
+        [
+          "BTN_QR_SIZE",
+          "Size"
+        ],
+        [
+          "BTN_QR_REFRESH",
+          "Refresh"
+        ]
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "key": "arm",
+      "label": "Control",
+      "type": "choice",
+      "default": "off",
+      "options": [
+        [
+          "off",
+          "Disarmed - simulated only (safe)"
+        ],
+        [
+          "on",
+          "Armed - drives the real shutters"
+        ]
+      ]
+    },
+    {
+      "key": "flaps",
+      "label": "Shutters",
+      "type": "choice",
+      "default": "both",
+      "options": [
+        [
+          "both",
+          "Upper and lower"
+        ],
+        [
+          "upper",
+          "Upper only"
+        ],
+        [
+          "lower",
+          "Lower only"
+        ]
+      ]
+    },
+    {
+      "key": "coolLimit",
+      "label": "Closed: hand back to DME at coolant",
+      "type": "choice",
+      "default": "105",
+      "options": [
+        [
+          "95",
+          "95 C"
+        ],
+        [
+          "100",
+          "100 C"
+        ],
+        [
+          "105",
+          "105 C"
+        ],
+        [
+          "110",
+          "110 C"
+        ],
+        [
+          "off",
+          "Never (not recommended)"
+        ]
+      ]
+    },
+    {
+      "key": "hold",
+      "label": "Hold override",
+      "type": "choice",
+      "default": "smart",
+      "options": [
+        [
+          "smart",
+          "Smart - check every 1 s, refresh every 6 s"
+        ],
+        [
+          "6",
+          "Re-send every 6 s"
+        ],
+        [
+          "10",
+          "Re-send every 10 s"
+        ],
+        [
+          "20",
+          "Re-send every 20 s"
+        ],
+        [
+          "off",
+          "Off (DME takes over after ~8-30 s)"
+        ]
+      ]
+    },
+    {
+      "key": "logTz",
+      "label": "Log time zone",
+      "type": "choice",
+      "default": "60",
+      "options": [
+        [
+          "0",
+          "UTC"
+        ],
+        [
+          "60",
+          "UTC+1 (winter)"
+        ],
+        [
+          "120",
+          "UTC+2 (summer)"
+        ]
+      ]
+    },
+    {
+      "key": "mode",
+      "label": "Mode",
+      "type": "choice",
+      "default": "oem",
+      "hidden": true,
+      "options": [
+        [
+          "open",
+          "Open"
+        ],
+        [
+          "closed",
+          "Closed"
+        ],
+        [
+          "oem",
+          "OEM"
+        ]
+      ]
+    }
+  ],
+  "config": {
+    "ecu": "12",
+    "flaps": [
+      {
+        "id": "upper",
+        "name": "upper",
+        "ctrl": "6013",
+        "asw": "6213",
+        "asg": "6413"
+      },
+      {
+        "id": "lower",
+        "name": "lower",
+        "ctrl": "6014",
+        "asw": "6214",
+        "asg": "6414"
+      }
+    ],
+    "openPct": 100,
+    "closedPct": 0,
+    "statusDid": "4AD2",
+    "posDid": "58D3",
+    "session": null,
+    "requireProbe": true,
+    "openDeg": 80,
+    "closedDeg": 3
+  }
+}
