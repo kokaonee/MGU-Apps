@@ -80,6 +80,7 @@ mgu.run({
 
         function view() {
             const s = ags.status(), v = { page, armed: s.armed, standing: s.standing, mode: s.mode };
+            v.paint = ags.settings ? ags.settings.get('paint') : null;
             v.word = SHORT[s.mode] || '...';
             v.speed = s.speed; v.coolant = s.coolant; v.carMode = fesShort(s.fesRaw);
             const rb = s.readback && s.readback.at && Date.now() - s.readback.at < RB_FRESH_MS ? s.readback : null;

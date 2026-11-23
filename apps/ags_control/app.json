@@ -284,6 +284,46 @@
       ]
     },
     {
+      "key": "paint",
+      "label": "Paint (picture)",
+      "type": "choice",
+      "default": "sapphire",
+      "options": [
+        [
+          "sapphire",
+          "Black Sapphire"
+        ],
+        [
+          "carbon",
+          "Carbon Black"
+        ],
+        [
+          "alpine",
+          "Alpine White"
+        ],
+        [
+          "mineral",
+          "Mineral White"
+        ],
+        [
+          "phytonic",
+          "Phytonic Blue"
+        ],
+        [
+          "sophisto",
+          "Sophisto Grey"
+        ],
+        [
+          "bernina",
+          "Bernina Grey Amber"
+        ],
+        [
+          "red",
+          "Red"
+        ]
+      ]
+    },
+    {
       "key": "logTz",
       "label": "Log time zone",
       "type": "choice",

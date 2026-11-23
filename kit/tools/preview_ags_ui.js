@@ -19,7 +19,7 @@ const t = theme('m_tricolour');
 
 const base = {
     armed: true, standing: true, mode: 'open', word: 'OPEN', sub: 'Held by the app  ·  sent 4 s ago  ·  DME takeovers 2',
-    speed: 0, coolant: 88, posDeg: 83.5, carMode: 'Sport', upper: 1, lower: 1, upperDim: false, lowerDim: false,
+    paint: 'red', speed: 0, coolant: 88, posDeg: 83.5, carMode: 'Sport', upper: 1, lower: 1, upperDim: false, lowerDim: false,
     rows: [
         ['DIAGNOSTIC LINK', 'yes', 'good'], ['SHUTTER MODULE (DME)', 'answers', 'good'], ['CAR MODE', 'Sport'],
         ['SENT TO CAR', 'OPEN  ·  4 s ago  ·  #12'], ['DME TAKEOVERS', '2  ·  every ~60 s  ·  next in 38 s'],
@@ -35,6 +35,9 @@ const cases = {
     shutters_closed: { page: 'Shutters', mode: 'closed', word: 'CLOSED', upper: 0, lower: 0, posDeg: 0 },
     shutters_oem_moving: { page: 'Shutters', mode: 'oem', word: 'OEM', sub: 'DME in control', standing: false, speed: 37,
         notice: 'Open / Closed only at standstill (37 km/h)', upper: 0.35, lower: 0.35, upperDim: true, lowerDim: true, posDeg: null },
+    paint_sapphire: { page: 'Shutters', paint: 'sapphire', mode: 'closed', word: 'CLOSED', upper: 0, lower: 0, posDeg: 0 },
+    paint_alpine: { page: 'Shutters', paint: 'alpine' },
+    paint_phytonic: { page: 'Shutters', paint: 'phytonic', mode: 'oem', word: 'OEM', sub: 'DME in control', upper: 0.35, lower: 0.35, upperDim: true, lowerDim: true },
     shutters_sim: { page: 'Shutters', armed: false, sub: 'Simulated  ·  "Car control" is off in Settings', subWarn: true },
     status: { page: 'Status' },
     log: { page: 'Log' },
