@@ -1,0 +1,66 @@
+{
+  "id": "file_explorer",
+  "title": "File Explorer",
+  "description": "Browse the head unit's folders and read files (app logs above all) on the central display, read-only. Logs as plain-text QR codes for the phone.",
+  "version": "0.1.0",
+  "vendor": "custom",
+  "loggingId": "OFX1",
+  "iconGlyph": "FX",
+  "mguHmi": [
+    "ID7",
+    "ID8"
+  ],
+  "requires": {
+    "idrive7-renderd": "2.1.18",
+    "mgu-inputgate": "1.1.0"
+  },
+  "screens": [
+    {
+      "name": "MAIN",
+      "kind": "canvas",
+      "title": "File Explorer",
+      "buttons": [
+        ["BTN_UP", "Up"],
+        ["BTN_DOWN", "Down"],
+        ["BTN_OPEN", "Open"],
+        ["BTN_BACK", "Back"],
+        ["BTN_PAGE", "Next page"],
+        ["BTN_QR", "QR code"],
+        ["BTN_SETTINGS", "Settings"]
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "key": "hidden",
+      "label": "Hidden files (.name)",
+      "type": "choice",
+      "default": "show",
+      "options": [
+        ["show", "Show"],
+        ["hide", "Hide"]
+      ]
+    },
+    {
+      "key": "textSize",
+      "label": "Text size",
+      "type": "choice",
+      "default": "normal",
+      "options": [
+        ["normal", "Normal"],
+        ["large", "Large"]
+      ]
+    },
+    {
+      "key": "logTz",
+      "label": "Time zone (file times)",
+      "type": "choice",
+      "default": "60",
+      "options": [
+        ["0", "UTC"],
+        ["60", "UTC+1 (winter)"],
+        ["120", "UTC+2 (summer)"]
+      ]
+    }
+  ]
+}

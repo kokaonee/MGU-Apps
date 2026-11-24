@@ -7,6 +7,7 @@ Custom apps for BMW iDrive 7 (MGU) head units, installable via the [MGU Store](h
 | App | Version | What it does |
 |---|---|---|
 | [AGS Control](apps/ags_control/README.md) | 0.3.0 | Opens and closes the active grille shutters at standstill (show use), with live read-back and a telemetry log exportable as plain-text QR code. Tested on a G30 545e. |
+| [File Explorer](apps/file_explorer/README.md) | 0.1.0 | Browse the head unit's folders and read files (app logs above all) on the central display, strictly read-only; lines as plain-text QR codes for the phone. |
 
 ## Install via the MGU Store
 
@@ -29,6 +30,7 @@ If the original kit repository (or a fork of it) is also a source in your Store,
 
 ```sh
 node kit/tools/test_ags_control.js                    # offline tests (fake DME, real diag transport)
+node kit/tools/test_file_explorer.js                  # File Explorer offline tests
 python3 kit/tools/build.py --preview-only ags_control # build without BMW's SDK
 node kit/tools/preview.js dist/ags_control out wait=3 # run it against a stubbed head unit
 ```
